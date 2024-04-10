@@ -7,10 +7,7 @@ import africa.semicolon.notemanagementsystem.dtos.response.AddNoteResponse;
 import africa.semicolon.notemanagementsystem.dtos.response.EditNoteResponse;
 import africa.semicolon.notemanagementsystem.dtos.response.unlockResponse;
 import africa.semicolon.notemanagementsystem.dtos.response.RegisterResponse;
-import africa.semicolon.notemanagementsystem.exceptions.IncorrectPasswordException;
-import africa.semicolon.notemanagementsystem.exceptions.LoginException;
-import africa.semicolon.notemanagementsystem.exceptions.UserNotFoundException;
-import africa.semicolon.notemanagementsystem.exceptions.UsernameExistsException;
+import africa.semicolon.notemanagementsystem.exceptions.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -122,6 +119,6 @@ public class UserServiceImpl implements UserServices {
     private void validateUser(RegisterRequest registerRequest){
         users.findAll().forEach(user -> {if(user.getUsername().equals(registerRequest.getUsername().toLowerCase()))throw new UsernameExistsException(registerRequest.getUsername()+" already exists");});
         users.findAll().forEach(user -> {if(user.getEmail().equals(registerRequest.getEmail().toLowerCase()))throw new UsernameExistsException("email already exists");});
-
+        if(registerRequest.getPhoneNumber().length() != 11)throw new InvalidPhoneNumberException("enter valid phone number");
     }
 }

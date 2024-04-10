@@ -11,8 +11,6 @@ import africa.semicolon.notemanagementsystem.exceptions.NoteNotFoundException;
 import africa.semicolon.notemanagementsystem.exceptions.TitleExistsException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static africa.semicolon.notemanagementsystem.utils.Mapper.map;

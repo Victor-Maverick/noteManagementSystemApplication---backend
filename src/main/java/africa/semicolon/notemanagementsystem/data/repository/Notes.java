@@ -10,7 +10,6 @@ import java.util.List;
 public interface Notes extends MongoRepository<Note, String> {
 
     Note findByTitle(String title);
-
     List<Note> findByAuthor(String username);
 
 }
