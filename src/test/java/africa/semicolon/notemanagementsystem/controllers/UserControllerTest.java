@@ -65,5 +65,5 @@ public class UserControllerTest {
         controller.unlockNotes(unlockRequest);
         assertFalse(users.findByUsername(registerRequest.getUsername()).isLocked());
     }
-    
+
 }
