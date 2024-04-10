@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class DeleteUserRequest {
-    private String username;
+public class SearchNoteRequest {
+    private String title;
+    private String author;
 }

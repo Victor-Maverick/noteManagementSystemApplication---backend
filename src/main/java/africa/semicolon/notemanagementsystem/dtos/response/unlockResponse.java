@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class LoginResponse {
+public class unlockResponse {
     private String id;
     private String username;
     private boolean isLoggedIn;
