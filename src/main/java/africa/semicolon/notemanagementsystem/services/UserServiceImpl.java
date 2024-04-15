@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserServices {
 
     @Override
     public unlockResponse unlockNotes(UnlockRequest unlockRequest) {
-        users.findAll().forEach(user -> {if(!user.getUsername().equals(unlockRequest.getUsername().toLowerCase()))throw new UsernameExistsException(unlockRequest.getUsername()+" does not exist");});
         User user = users.findByUsername(unlockRequest.getUsername());
+        if (user == null)throw new UserNotFoundException(unlockRequest.getUsername()+ " not found");
         if(!user.getPassword().equals(unlockRequest.getPassword()))throw new IncorrectPasswordException("wrong password");
         user.setLocked(false);
         users.save(user);
