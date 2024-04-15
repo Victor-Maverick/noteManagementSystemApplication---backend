@@ -4,7 +4,7 @@ import africa.semicolon.notemanagementsystem.data.model.Note;
 import africa.semicolon.notemanagementsystem.dtos.request.*;
 import africa.semicolon.notemanagementsystem.dtos.response.AddNoteResponse;
 import africa.semicolon.notemanagementsystem.dtos.response.EditNoteResponse;
-import africa.semicolon.notemanagementsystem.dtos.response.unlockResponse;
+import africa.semicolon.notemanagementsystem.dtos.response.UnlockResponse;
 import africa.semicolon.notemanagementsystem.dtos.response.RegisterResponse;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public interface UserServices {
 
     String deleteUser(DeleteUserRequest deleteRequest);
 
-    unlockResponse unlockNotes(UnlockRequest unlockRequest);
+    UnlockResponse unlockNotes(UnlockRequest unlockRequest);
 
     String lockNotes(LockRequest lockRequest);
 

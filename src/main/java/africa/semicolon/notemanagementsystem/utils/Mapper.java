@@ -7,7 +7,7 @@ import africa.semicolon.notemanagementsystem.dtos.request.EditNoteRequest;
 import africa.semicolon.notemanagementsystem.dtos.request.RegisterRequest;
 import africa.semicolon.notemanagementsystem.dtos.response.AddNoteResponse;
 import africa.semicolon.notemanagementsystem.dtos.response.EditNoteResponse;
-import africa.semicolon.notemanagementsystem.dtos.response.unlockResponse;
+import africa.semicolon.notemanagementsystem.dtos.response.UnlockResponse;
 import africa.semicolon.notemanagementsystem.dtos.response.RegisterResponse;
 
 import java.time.LocalDateTime;
@@ -50,12 +50,11 @@ public class Mapper {
         response.setNewContent(note.getContent());
         return response;
     }
-    public static unlockResponse mapLogin(User user){
-        unlockResponse response = new unlockResponse();
+    public static UnlockResponse mapLogin(User user){
+        UnlockResponse response = new UnlockResponse();
         response.setId(user.getId());
-        response.setPhoneNumber(user.getPhoneNumber());
-        response.setUsername(response.getUsername());
-        response.setLoggedIn(user.isLocked());
+        response.setUsername(user.getUsername());
+        response.setLocked(user.isLocked());
         return response;
     }
 

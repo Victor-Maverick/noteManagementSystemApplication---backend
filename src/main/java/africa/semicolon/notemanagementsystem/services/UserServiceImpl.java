@@ -5,7 +5,7 @@ import africa.semicolon.notemanagementsystem.data.repository.Users;
 import africa.semicolon.notemanagementsystem.dtos.request.*;
 import africa.semicolon.notemanagementsystem.dtos.response.AddNoteResponse;
 import africa.semicolon.notemanagementsystem.dtos.response.EditNoteResponse;
-import africa.semicolon.notemanagementsystem.dtos.response.unlockResponse;
+import africa.semicolon.notemanagementsystem.dtos.response.UnlockResponse;
 import africa.semicolon.notemanagementsystem.dtos.response.RegisterResponse;
 import africa.semicolon.notemanagementsystem.exceptions.*;
 import lombok.AllArgsConstructor;
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserServices {
     }
 
     @Override
-    public unlockResponse unlockNotes(UnlockRequest unlockRequest) {
+    public UnlockResponse unlockNotes(UnlockRequest unlockRequest) {
         User user = users.findByUsername(unlockRequest.getUsername());
         if (user == null)throw new UserNotFoundException(unlockRequest.getUsername()+ " not found");
         if(!user.getPassword().equals(unlockRequest.getPassword()))throw new IncorrectPasswordException("wrong password");

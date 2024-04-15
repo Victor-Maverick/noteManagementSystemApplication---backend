@@ -5,9 +5,8 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class unlockResponse {
+public class UnlockResponse {
     private String id;
     private String username;
-    private boolean isLoggedIn;
-    private String phoneNumber;
+    private boolean isLocked;
 }
