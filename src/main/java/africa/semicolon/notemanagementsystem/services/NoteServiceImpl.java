@@ -31,16 +31,16 @@ public class NoteServiceImpl implements NoteServices {
 
     @Override
     public String deleteNote(DeleteNoteRequest deleteNoteRequest) {
-        notes.findAll().forEach(note->{if(!note.getTitle().equalsIgnoreCase(deleteNoteRequest.getTitle()))throw new NoteNotFoundException("title does not exist");});
         Note note = notes.findByTitle(deleteNoteRequest.getTitle());
+        if (note == null)throw new NoteNotFoundException(deleteNoteRequest.getTitle()+" not found");
         notes.delete(note);
         return "delete success";
     }
 
     @Override
     public EditNoteResponse editNote(EditNoteRequest editNoteRequest) {
-        notes.findAll().forEach(note->{if(!note.getTitle().equalsIgnoreCase(editNoteRequest.getTitle()))throw new NoteNotFoundException("title does not exist");});
         Note note = notes.findByTitle(editNoteRequest.getTitle());
+        if(note == null)throw new NoteNotFoundException(editNoteRequest.getNewTitle()+ " not found");
         map(note, editNoteRequest);
         notes.save(note);
         return mapUpdate(note);
