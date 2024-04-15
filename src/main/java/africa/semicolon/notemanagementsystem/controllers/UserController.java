@@ -83,7 +83,7 @@ public class UserController {
     }
 
     @GetMapping("/find-note")
-    public ResponseEntity<?> findByTitle(SearchNoteRequest searchRequest) {
+    public ResponseEntity<?> findByTitle(@RequestBody SearchNoteRequest searchRequest) {
         try {
             Note note = userServices.searchForNote(searchRequest);
             return new ResponseEntity<>(new ApiResponse(true, note), OK);
